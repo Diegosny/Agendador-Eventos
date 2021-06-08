@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PessoaController;
+use App\Models\Pessoa;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +16,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('pessoa')->group(function () {
+    Route::get('/', [PessoaController::class, 'index']);
+    Route::get('/create', [PessoaController::class, 'create']);
+    Route::post('/store', [PessoaController::class, 'store'])->name('cadastro.pessoa');
+});
