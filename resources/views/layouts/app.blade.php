@@ -61,7 +61,7 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Eventos </a>
                             
                                 <div class="dropdown-menu dropdown-menu-lrefy" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#"> Adicionar Eventos </a>
+                                    <a class="dropdown-item" href="/eventos/create"> Adicionar Eventos </a>
                                     <hr class="dropdown-divider">
                                     <a class="dropdown-item" href="#"> Listar Eventos </a>
                                 </div>

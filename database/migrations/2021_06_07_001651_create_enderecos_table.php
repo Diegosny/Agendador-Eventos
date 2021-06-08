@@ -19,6 +19,8 @@ class CreateEnderecosTable extends Migration
             $table->bigInteger('numero')->unsigned();
             $table->string('rua');
             $table->enum('zona', ['Urbana', 'Rural']);
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users');
             $table->timestamps();
         });
     }

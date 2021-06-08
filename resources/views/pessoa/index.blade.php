@@ -26,7 +26,7 @@
                             </div>
 
                             <div class="form-group mt-3">
-                                <input type="text" @if($apelido || $apelido == null) disabled @endif placeholder="Apelido" name="apelido" class="form-control" value="{{ $apelido ?? '' }}">
+                                <input type="text" @if($apelido || $apelido != '') disabled @endif placeholder="Apelido" name="apelido" class="form-control" value="{{ $apelido ?? '' }}">
                             </div>
                         </div>
 
@@ -36,7 +36,7 @@
                             </div>
 
                             <div class="forom-group mt-3">
-                                <input type="integer" @if($cpf || $cpf == null) disabled @endif class="form-control" name="cpf" placeholder="CPF" value="{{ $cpf ?? '' }}">
+                                <input type="integer" @if($cpf || $cpf != '') disabled @endif class="form-control" name="cpf" placeholder="CPF" value="{{ $cpf ?? '' }}">
                             </div>
 
                             <div class="form-group mt-3">

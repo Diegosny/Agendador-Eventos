@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventosController;
 use App\Http\Controllers\PessoaController;
 use App\Models\Pessoa;
 use Illuminate\Support\Facades\Route;
@@ -27,4 +28,8 @@ Route::prefix('pessoa')->group(function () {
     Route::get('/', [PessoaController::class, 'index']);
     Route::get('/create', [PessoaController::class, 'create']);
     Route::post('/store', [PessoaController::class, 'store'])->name('cadastro.pessoa');
+});
+
+Route::prefix('eventos')->group(function () {
+    Route::get('/create', [EventosController::class, 'create']);
 });
