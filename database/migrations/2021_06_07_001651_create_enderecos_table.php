@@ -16,7 +16,7 @@ class CreateEnderecosTable extends Migration
         Schema::create('enderecos', function (Blueprint $table) {
             $table->id();
             $table->string('localidade');
-            $table->integer('numero')->unsigned();
+            $table->bigInteger('numero')->unsigned();
             $table->string('rua');
             $table->enum('zona', ['Urbana', 'Rural']);
             $table->timestamps();

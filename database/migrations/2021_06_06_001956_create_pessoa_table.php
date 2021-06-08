@@ -17,8 +17,8 @@ class CreatePessoaTable extends Migration
             $table->id();
             $table->string('nome');
             $table->string('sobre_nome');
-            $table->integer('telefone');
-            $table->integer('cpf')->nullable();
+            $table->bigInteger('telefone');
+            $table->bigInteger('cpf')->nullable();
             $table->string('apelido')->nullable();
             $table->date('data_nascimento');
             $table->unsignedBigInteger('id_user');

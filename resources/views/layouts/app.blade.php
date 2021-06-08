@@ -73,7 +73,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-lrefy" aria-labelledby="navbarDropdown">
-                                    <a href="#" class="dropdown-item">Meu Perfil </a>
+                                    <a href="/pessoa" class="dropdown-item">Meu Perfil </a>
                                     <hr class="dropdown-divider">
                                     <a href="#" class="dropdown-item">Convidar Pessoas</a>
                                     <hr class="dropdown-divider">
