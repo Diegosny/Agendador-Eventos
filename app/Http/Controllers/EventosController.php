@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PessoaRequest;
-use App\Models\Pessoa;
+use App\Models\Eventos;
+use App\Service\EventosService;
 use Illuminate\Http\Request;
-use App\Service\PessoaService;
-use Illuminate\Support\Facades\Session;
 
-class PessoaController extends Controller
+class EventosController extends Controller
 {
 
     private $service;
 
-    public function __construct(PessoaService $service)
+    public function __construct(EventosService $service)
     {
         $this->middleware('auth');
         $this->service = $service;
@@ -26,8 +24,7 @@ class PessoaController extends Controller
      */
     public function index()
     {
-        $response = $this->service->index();
-        return view('pessoa.index')->with($response);
+        
     }
 
     /**
@@ -37,7 +34,8 @@ class PessoaController extends Controller
      */
     public function create()
     {
-        return view('pessoa.cadastro');
+        $response = $this->service->showForm();
+        return view('eventos.cadastro')->with($response);
     }
 
     /**
@@ -46,23 +44,18 @@ class PessoaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PessoaRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->all();
-        $response = $this->service->storage($data);
-        if($response)
-            return redirect('/pessoa')->with('success', 'Perfil Atualizado Com Sucesso');
-
-        return redirect('/pessoa')->with('error', 'Não Foi Possivel Atualizar O Perfil');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pessoa  $pessoa
+     * @param  \App\Models\Eventos  $eventos
      * @return \Illuminate\Http\Response
      */
-    public function show(Pessoa $pessoa)
+    public function show(Eventos $eventos)
     {
         //
     }
@@ -70,10 +63,10 @@ class PessoaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pessoa  $pessoa
+     * @param  \App\Models\Eventos  $eventos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pessoa $pessoa)
+    public function edit(Eventos $eventos)
     {
         //
     }
@@ -82,10 +75,10 @@ class PessoaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pessoa  $pessoa
+     * @param  \App\Models\Eventos  $eventos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pessoa $pessoa)
+    public function update(Request $request, Eventos $eventos)
     {
         //
     }
@@ -93,10 +86,10 @@ class PessoaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pessoa  $pessoa
+     * @param  \App\Models\Eventos  $eventos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pessoa $pessoa)
+    public function destroy(Eventos $eventos)
     {
         //
     }
