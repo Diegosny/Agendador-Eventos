@@ -25,7 +25,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -56,14 +56,30 @@
                                 </li>
                             @endif
                         @else
+
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Eventos </a>
+                            
+                                <div class="dropdown-menu dropdown-menu-lrefy" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#"> Adicionar Eventos </a>
+                                    <hr class="dropdown-divider">
+                                    <a class="dropdown-item" href="#"> Listar Eventos </a>
+                                </div>
+                            </li>
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    <strong> Perfil: </strong> {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-lrefy" aria-labelledby="navbarDropdown">
+                                    <a href="#" class="dropdown-item">Meu Perfil </a>
+                                    <hr class="dropdown-divider">
+                                    <a href="#" class="dropdown-item">Convidar Pessoas</a>
+                                    <hr class="dropdown-divider">
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }}
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
