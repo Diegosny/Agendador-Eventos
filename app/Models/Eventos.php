@@ -6,19 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Pessoa extends Model
+class Eventos extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
-    protected $table = 'pessoa';
+    protected $table = 'eventos';
 
     protected $fillable = [
         'nome',
-        'sobre_nome',
-        'telefone',
-        'cpf',
-        'apelido',
-        'data_nascimento',
-        'id_user'
+        'descricao',
+        'hora_evento',
+        'id_endereco'
     ];
 }

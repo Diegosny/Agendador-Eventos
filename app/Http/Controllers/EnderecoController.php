@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PessoaRequest;
-use App\Models\Pessoa;
+use App\Models\Endereco;
+use App\Service\EnderecoService;
 use Illuminate\Http\Request;
-use App\Service\PessoaService;
-use Illuminate\Support\Facades\Session;
 
-class PessoaController extends Controller
+class EnderecoController extends Controller
 {
+    protected $service;
 
-    private $service;
-
-    public function __construct(PessoaService $service)
+    public function __construct(EnderecoService $service)
     {
         $this->middleware('auth');
         $this->service = $service;
@@ -26,8 +23,7 @@ class PessoaController extends Controller
      */
     public function index()
     {
-        $response = $this->service->index();
-        return view('pessoa.index')->with($response);
+        //
     }
 
     /**
@@ -37,7 +33,7 @@ class PessoaController extends Controller
      */
     public function create()
     {
-        return view('pessoa.cadastro');
+        //
     }
 
     /**
@@ -46,23 +42,26 @@ class PessoaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PessoaRequest $request)
+    public function store(Request $request)
     {
         $data = $request->all();
         $response = $this->service->storage($data);
-        if($response)
-            return redirect('/pessoa')->with('success', 'Perfil Atualizado Com Sucesso');
+        return response()->json($response);
+    }
 
-        return redirect('/pessoa')->with('error', 'Não Foi Possivel Atualizar O Perfil');
+    public function listarEnderecos () 
+    {
+        $response = $this->service->listarEnderecos();
+        return response()->json($response);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pessoa  $pessoa
+     * @param  \App\Models\Endereco  $endereco
      * @return \Illuminate\Http\Response
      */
-    public function show(Pessoa $pessoa)
+    public function show(Endereco $endereco)
     {
         //
     }
@@ -70,10 +69,10 @@ class PessoaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pessoa  $pessoa
+     * @param  \App\Models\Endereco  $endereco
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pessoa $pessoa)
+    public function edit(Endereco $endereco)
     {
         //
     }
@@ -82,10 +81,10 @@ class PessoaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pessoa  $pessoa
+     * @param  \App\Models\Endereco  $endereco
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pessoa $pessoa)
+    public function update(Request $request, Endereco $endereco)
     {
         //
     }
@@ -93,10 +92,10 @@ class PessoaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pessoa  $pessoa
+     * @param  \App\Models\Endereco  $endereco
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pessoa $pessoa)
+    public function destroy(Endereco $endereco)
     {
         //
     }

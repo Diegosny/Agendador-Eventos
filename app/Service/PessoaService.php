@@ -16,12 +16,12 @@ class PessoaService
         $id = Auth::user()->id;
         $perfil = Pessoa::where('id_user', $id)->first();
         return [
-            'nome' => $perfil->nome,
-            'sobre_nome' => $perfil->sobre_nome,
-            'telefone' => $perfil->telefone,
-            'cpf' => $perfil->cpf,
-            'apelido' => $perfil->apelido,
-            'data_nascimento' => $perfil->data_nascimento
+            'nome' => $perfil->nome ?? '',
+            'sobre_nome' => $perfil->sobre_nome ?? '',
+            'telefone' => $perfil->telefone ?? '',
+            'cpf' => $perfil->cpf ?? '',
+            'apelido' => $perfil->apelido ?? '',
+            'data_nascimento' => $perfil->data_nascimento ?? ''
         ];
     }
 
