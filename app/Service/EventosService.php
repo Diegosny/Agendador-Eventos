@@ -11,10 +11,10 @@ class EventosService
     public function showForm () 
     {
       $user = Auth::user()->id;
-       $endereco = DB::table('enderecos')->where('id_user', $user)->get();
+      $endereco = DB::table('enderecos')->where('id_user', $user)->get();
        
        return [
-         'endereco' => $endereco
+         'enderecos' => $endereco
        ];
     }
 }

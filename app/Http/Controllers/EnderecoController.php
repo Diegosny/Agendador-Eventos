@@ -49,6 +49,12 @@ class EnderecoController extends Controller
         return response()->json($response);
     }
 
+    public function listarEnderecos () 
+    {
+        $response = $this->service->listarEnderecos();
+        return response()->json($response);
+    }
+
     /**
      * Display the specified resource.
      *

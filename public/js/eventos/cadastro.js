@@ -45,9 +45,11 @@ $(document).ready(function () {
            type: 'post',
            data: dados,
            success: function (data) {
-              swal(data).then(function () {
-                location.reload();
-              })
+              swal(data)
+              .then( () => {
+                if($(`input[name='qtd_endereco']`).val() <= 0) location.reload();
+                else $('#cancelar_endereco').click()
+               })
               
            },
            error: function (data) {
@@ -57,6 +59,22 @@ $(document).ready(function () {
         })
       }
       
+  })
+
+  $(`select[name='id_endereco']`).on('focus', function () {
+    $('#id_endereco').children().remove()
+    $.ajax({
+      url: '/endereco/listar-enderecos',
+      type: 'get',
+      success: function (data) {
+        data.filter(item => {
+            $('#id_endereco').append(`<option value="${item['id']}"> <strong>Bairro: </strong> ${item['localidade']} - <strong>N°</strong> ${item['numero']} - <strong>Rua: </strong> ${item['rua']} </option>`)
+        })
+      },
+      error: function (data) {
+        swal(`Error`, `Não foi possível realizar a consulta`, 'error');
+      }
+    })
   })
 
 })

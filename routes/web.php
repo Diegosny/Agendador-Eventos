@@ -4,6 +4,7 @@ use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\EventosController;
 use App\Http\Controllers\PessoaController;
 use App\Models\Pessoa;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,4 +40,5 @@ Route::prefix('eventos')->group(function () {
 Route::prefix('endereco')->group(function () {
     Route::get('/create', [EnderecoController::class, 'create']);
     Route::post('/store', [EnderecoController::class, 'store'])->name('cadastro.endereco');
+    Route::get('/listar-enderecos', [EnderecoController::class, 'listarEnderecos']);
 });

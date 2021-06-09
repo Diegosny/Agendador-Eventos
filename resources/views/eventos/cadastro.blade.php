@@ -43,14 +43,14 @@
                                     </div>
 
                                       <div class="form-group mt-3">
+                                        <input type="hidden" name="qtd_endereco" value="{{ count($enderecos) }}">
                                         <label for="" class="form-label">Endereço Do Evento *</label>
-                                        <select name="id_endereco" class="form-control w-50" aria-label="Default select example">
-                                            <option value="">Selecione</option>
-                                        </select>
-                                        <input type="hidden" name="qtd_endereco" value="{{ count($endereco) }}"> 
-                                        @if(isset($endereco) && count($endereco) <= 0)
+                                        <select name="id_endereco" id="id_endereco" class="form-control w-50" aria-label="Default select example"></select>
+                                        @if(isset($enderecos) && count($enderecos) <= 0)
                                           <p class="text-danger mt-3"> <strong>Observação:</strong> No momento você não possui nenhum endereço cadastrado, clique <a href="" data-toggle="modal" data-target="#exampleModal">aqui</a> para cadastrar. </p>
                                         @endif
+                                        <button onclick="return false;" class="mt-3 btn btn-primary" data-toggle="modal" data-target="#exampleModal">Adicionar Endereço</button>
+
                                         @if ($errors->has('apelido'))
                                             <div class="text-danger">
                                                 <li>{{ $errors->first('apelido') }}</li>
@@ -109,7 +109,7 @@
 
                                       </div>
                                       <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <button type="button" id="cancelar_endereco" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                         <button type="button" id="salvar_endereco" class="btn btn-primary">Salvar</button>
                                       </div>
                                     </div>
