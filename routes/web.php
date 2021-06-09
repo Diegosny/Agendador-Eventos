@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\EventosController;
 use App\Http\Controllers\PessoaController;
 use App\Models\Pessoa;
@@ -32,4 +33,10 @@ Route::prefix('pessoa')->group(function () {
 
 Route::prefix('eventos')->group(function () {
     Route::get('/create', [EventosController::class, 'create']);
+});
+
+
+Route::prefix('endereco')->group(function () {
+    Route::get('/create', [EnderecoController::class, 'create']);
+    Route::post('/store', [EnderecoController::class, 'store'])->name('cadastro.endereco');
 });
