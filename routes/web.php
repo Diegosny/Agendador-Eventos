@@ -3,6 +3,7 @@
 use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\EventosController;
 use App\Http\Controllers\PessoaController;
+use App\Models\Eventos;
 use App\Models\Pessoa;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -33,7 +34,10 @@ Route::prefix('pessoa')->group(function () {
 });
 
 Route::prefix('eventos')->group(function () {
+    Route::get('/', [EventosController::class, 'index']);
     Route::get('/create', [EventosController::class, 'create']);
+    Route::post('/store', [EventosController::class, 'store'])->name('cadastro.evento');
+    Route::delete('/delete/{id}', [EventosController::class, 'destroy']);
 });
 
 

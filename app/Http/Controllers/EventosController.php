@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EventosRequest;
 use App\Models\Eventos;
 use App\Service\EventosService;
 use Illuminate\Http\Request;
@@ -24,7 +25,8 @@ class EventosController extends Controller
      */
     public function index()
     {
-        
+        $dependencias = $this->service->listagemEventos();
+        return view('eventos.index')->with('eventos', $dependencias);
     }
 
     /**
@@ -44,9 +46,14 @@ class EventosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EventosRequest $request)
     {
-        //
+        $data = $request->all();
+        $response = $this->service->storage($data);
+        if($response)
+            return redirect('/eventos')->with('success', 'Evento Agendado Com Sucesso!');
+
+        return redirect('/eventos/create')->with('error', 'Não Realizar Um Agendamento!');
     }
 
     /**
@@ -89,8 +96,9 @@ class EventosController extends Controller
      * @param  \App\Models\Eventos  $eventos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Eventos $eventos)
+    public function destroy(Eventos $eventos, $id)
     {
-        //
+        $response = $this->service->delete($id);
+        return response()->json($response);
     }
 }

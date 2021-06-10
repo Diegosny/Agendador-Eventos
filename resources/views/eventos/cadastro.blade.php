@@ -6,8 +6,15 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header"> Cadastro De Eventos </div>
+                @if (session()->has('error'))
+                    <div class="card bg-danger text-white">
+                        <div class="card-body">
+                        Não Foi Possivel Agendar, Verifique Os Dados
+                        </div>
+                    </div>
+                @endif
                    <div class="card-body">
-                        <form action="{{ route('cadastro.pessoa') }}" method="POST">
+                        <form action="{{ route('cadastro.evento') }}" method="POST">
                           @csrf
                           <div class="row">
                                 <div class="col-md-12">
@@ -25,19 +32,19 @@
                                     <div class="form-grop mt-3">
                                       <label for="" class="form-label">Descrição Do Evento *</label>
                                       <textarea name="descricao" placeholder="Descrição Do Evento" class="form-control" cols="30" rows="10"></textarea>
-                                        @if ($errors->has('telefone'))
+                                        @if ($errors->has('descricao'))
                                             <div class="text-danger">
-                                                <li>{{ $errors->first('telefone') }}</li>
+                                                <li>{{ $errors->first('descricao') }}</li>
                                             </div>
                                         @endif
                                     </div>
         
                                     <div class="form-group mt-3">
                                       <label for="" class="form-label">Data Do Evento *</label>
-                                        <input type="date" placeholder="Data Do Evento" name="hora_evento" class="w-25 form-control">
-                                        @if ($errors->has('apelido'))
+                                        <input type="datetime-local" placeholder="Data Do Evento" name="hora_evento" class="w-25 form-control">
+                                        @if ($errors->has('hora_evento'))
                                             <div class="text-danger">
-                                                <li>{{ $errors->first('apelido') }}</li>
+                                                <li>{{ $errors->first('hora_evento') }}</li>
                                             </div>
                                         @endif
                                     </div>
@@ -50,18 +57,12 @@
                                           <p class="text-danger mt-3"> <strong>Observação:</strong> No momento você não possui nenhum endereço cadastrado, clique <a href="" data-toggle="modal" data-target="#exampleModal">aqui</a> para cadastrar. </p>
                                         @endif
                                         <button onclick="return false;" class="mt-3 btn btn-primary" data-toggle="modal" data-target="#exampleModal">Adicionar Endereço</button>
-
-                                        @if ($errors->has('apelido'))
-                                            <div class="text-danger">
-                                                <li>{{ $errors->first('apelido') }}</li>
-                                            </div>
-                                        @endif
                                     </div>
                               </div>
                               
         
                               <div class="d-flex justify-content-center col-12 mt-5">
-                                  <a href="/pessoa" class="btn btn-secondary mr-3"> Voltar </a>    
+                                  <a href="/eventos" class="btn btn-secondary mr-3"> Voltar </a>    
                                   <button class="btn btn-dark" id="salvar_pessoa"> Salvar </button>
                               </div>
 
@@ -80,17 +81,17 @@
                                           <meta name="csrf-token" content="{{ csrf_token() }}">
                                           <div class="form-group">
                                             <label for="">Localidade*</label>
-                                              <input type="text" name="localidade" class="form-control" placeholder="Localidade">
+                                              <input type="text" value="" name="localidade" class="form-control" placeholder="Localidade">
                                           </div>
 
                                           <div class="form-group">
                                             <label for="">Número*</label>
-                                            <input type="number" name="numero" class="form-control" placeholder="Número">
+                                            <input type="number" value="" name="numero" class="form-control" placeholder="Número">
                                           </div>
 
                                           <div class="form-group">
                                             <label for="">Rua*</label>
-                                            <input type="text" name="rua" class="form-control" placeholder="Rua">
+                                            <input type="text" value="" name="rua" class="form-control" placeholder="Rua">
                                           </div>
 
                                           <div class="form-group">
