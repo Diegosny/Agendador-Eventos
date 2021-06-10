@@ -64,7 +64,7 @@
                                 <div class="dropdown-menu dropdown-menu-lrefy" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/eventos/create"> Adicionar Eventos </a>
                                     <hr class="dropdown-divider">
-                                    <a class="dropdown-item" href="/eventos"> Listar Eventos </a>
+                                    <a class="dropdown-item" href="/eventos"> Meus Eventos </a>
                                 </div>
                             </li>
 
