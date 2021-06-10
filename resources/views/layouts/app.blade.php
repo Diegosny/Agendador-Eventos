@@ -21,6 +21,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('js/sweetalert2/dist/sweetalert2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('js/datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
 
 </head>
 <body>
@@ -63,7 +64,7 @@
                                 <div class="dropdown-menu dropdown-menu-lrefy" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/eventos/create"> Adicionar Eventos </a>
                                     <hr class="dropdown-divider">
-                                    <a class="dropdown-item" href="#"> Listar Eventos </a>
+                                    <a class="dropdown-item" href="/eventos"> Listar Eventos </a>
                                 </div>
                             </li>
 

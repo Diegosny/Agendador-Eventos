@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+
   //Crie está função para validar qualquer campo no formulario de endereco
   const validaCamposEndereco = () => {
      if(!$("input[name=localidade]").val()) {
