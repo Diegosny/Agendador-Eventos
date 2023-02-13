@@ -26,7 +26,7 @@ jobs:
           php-version: '8.1'
           coverage: xdebug
       - name: Install composer dependencis
-        run: composer install --ignore-plataforms-reqs
+        run: composer install --ignore-platform-reqs
       - name: Install dependencies with composer
         run: composer update --no-ansi --no-interaction --no-progress
       - name: Run tests with phpunit/phpunit
