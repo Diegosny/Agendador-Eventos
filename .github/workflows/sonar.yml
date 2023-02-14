@@ -10,13 +10,15 @@ on:
 
 jobs:
   runs-on: ubuntu-latest
-  env: 
-    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-    SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
   build: Build Sonarqube
    steps:
      - name: Building Sonarqube
      - uses: sonarsource/sonarqube-scan-action@master
+     - env: 
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
   test:
     steps:
       - name: Checkout code #baixa o codigo para a maquina ubuntu-latest
