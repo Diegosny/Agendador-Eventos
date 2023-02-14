@@ -49,12 +49,8 @@ class PessoaController extends Controller
     public function store(PessoaRequest $request)
     {
         $data = $request->all();
-        $response = $this->service->storage($data);
-        if($response)
-            return redirect('/pessoa')->with('success', 'Perfil Atualizado Com Sucesso');
-
-        return redirect('/pessoa')->with('error', 'Não Foi Possivel Atualizar O Perfil');
-    }
+        $response = $this->service->storage($data
+    
 
     /**
      * Display the specified resource.
