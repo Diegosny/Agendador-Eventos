@@ -1,25 +1,30 @@
-name: Sonarquebue-ci
+name: Build
 
 on:
-  pull_requests: #toda vez que tiver uma ação de pull_request na branch dev, ele irá fazer esse build
-    branches:
-      - dev
   push:
     branches:
       - dev
 
+  pull_request:
+    branches:
+      - dev
+
+
 jobs:
-  runs-on: ubuntu-latest
-
-  build: Build Sonarqube
-   steps:
-     - name: Building Sonarqube
-     - uses: sonarsource/sonarqube-scan-action@master
-     - env: 
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-
-  test:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code #baixa o codigo para a maquina ubuntu-latest
-      - uses: action/checkout@v2
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      # If you wish to fail your job when the Quality Gate is red, uncomment the
+      # following lines. This would typically be used to fail a deployment.
+      # - uses: sonarsource/sonarqube-quality-gate-action@master
+      #   timeout-minutes: 5
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
