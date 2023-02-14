@@ -1,18 +1,23 @@
-name: Build
+name: Sonarquebue-ci
 
 on:
+  pull_requests: #toda vez que tiver uma ação de pull_request na branch dev, ele irá fazer esse build
+    branches:
+      - dev
   push:
     branches:
       - dev
+
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
+  runs-on: ubuntu-latest
+  env: 
+    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+  build: Build Sonarqube
+   steps:
+     - name: Building Sonarqube
+     - uses: sonarsource/sonarqube-scan-action@master
+  test:
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: sonarsource/sonarqube-scan-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      - name: Checkout code #baixa o codigo para a maquina ubuntu-latest
+      - uses: action/checkout@v2
