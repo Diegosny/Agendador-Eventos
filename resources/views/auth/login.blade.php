@@ -71,3 +71,7 @@
     </div>
 </div>
 @endsection
+
+<script>
+    alert('as
+</script>
