@@ -48,8 +48,8 @@ class PessoaController extends Controller
      */
     public function store(PessoaRequest $request)
     {
-        $data = $request->all();
-        $response = $this->service->storage($data
+        $data = $request->all();data
+        $response = $this->service->storage($
     
 
     /**
