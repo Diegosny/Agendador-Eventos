@@ -44,5 +44,6 @@ Route::prefix('eventos')->group(function () {
 Route::prefix('endereco')->group(function () {
     Route::get('/create', [EnderecoController::class, 'create']);
     Route::post('/store', [EnderecoController::class, 'store'])->name('cadastro.endereco');
+    
     Route::get('/listar-enderecos', [EnderecoController::class, 'listarEnderecos']);
 });
